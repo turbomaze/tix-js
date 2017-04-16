@@ -1,9 +1,9 @@
-// Tik clock in JS
+// Tix clock in JS
 // @author Anthony Liu
 // @date 2017/04/15
 // @license MIT
 
-var TickClock = (function() {
+var TixClock = (function() {
   // config
   var COL_HEIGHT = 3;
   var SECTIONS = [1, 3, 2, 3]; // left to right, hours to minutes
@@ -17,7 +17,7 @@ var TickClock = (function() {
     return a + b;
   });
 
-  function initTickClock(parentId) {
+  function initTixClock(parentId) {
     // populate the html
     populateHtml(parentId);
 
@@ -37,13 +37,13 @@ var TickClock = (function() {
   function populateHtml(parentId) {
     SECTIONS.map(function(count, index) {
       var section = document.createElement('div');
-      section.id = 'tick-section-' + index;
-      section.className = 'tick-section';
+      section.id = 'tix-section-' + index;
+      section.className = 'tix-section';
       if (index !== SECTIONS.length - 1) {
         section.style.marginRight = BUFFER_IN_PX + 'px';
       }
 
-      var base = 'tick-cell-' + index + '-';
+      var base = 'tix-cell-' + index + '-';
       for (var i = 0; i < count * COL_HEIGHT; i++) {
         var cell = generateCell(base, i);
         section.appendChild(cell);
@@ -56,7 +56,7 @@ var TickClock = (function() {
   function generateCell(base, index) {
     var div = document.createElement('div');
     div.id = base + index;
-    div.className = 'tick-cell';
+    div.className = 'tix-cell';
     div.innerHTML = '&nbsp;';
     return div;
   }
@@ -70,7 +70,7 @@ var TickClock = (function() {
       SECTIONS.length - 1
     );
     var cellWidth = Math.floor(workingWidth / NUM_COLS);
-    var cells = document.getElementsByClassName('tick-cell');
+    var cells = document.getElementsByClassName('tix-cell');
     for (var i = 0; i < cells.length; i++) {
       cells[i].style.width = cellWidth + 'px';
       cells[i].style.height = cellWidth + 'px';
@@ -79,7 +79,7 @@ var TickClock = (function() {
     // resize sections
     for (var i = 0; i < SECTIONS.length; i++) {
       document.getElementById(
-        'tick-section-' + i
+        'tix-section-' + i
       ).style.width = cellWidth * SECTIONS[i] + 'px';
     }
   }
@@ -99,7 +99,7 @@ var TickClock = (function() {
   function clearClock() {
     SECTIONS.map(function(count, index) {
       for (var i = 0; i < count * COL_HEIGHT; i++) {
-        clearCell('tick-cell-' + index + '-' + i);
+        clearCell('tix-cell-' + index + '-' + i);
       }
     });
   }
@@ -109,7 +109,7 @@ var TickClock = (function() {
     var arr = [];
     for (var i = 0; i < numCells; i++) arr.push(i);
     permute(arr).slice(0, n).map(function(i) {
-      colorCell('tick-cell-' + index + '-' + i);
+      colorCell('tix-cell-' + index + '-' + i);
     });
   }
 
@@ -127,11 +127,11 @@ var TickClock = (function() {
   }
 
   return {
-    init: initTickClock
+    init: initTixClock
   };
 })();
 
 window.addEventListener('load', function() {
   var parentId = 'clock';
-  TickClock.init(parentId);
+  TixClock.init(parentId);
 });

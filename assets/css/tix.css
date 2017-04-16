@@ -1,8 +1,8 @@
-.tick-section {
+.tix-section {
   float: left;
 }
 
-.tick-cell {
+.tix-cell {
   background: red;
   border: 1px solid white;
   box-sizing: border-box;
