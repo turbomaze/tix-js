@@ -1,0 +1,19 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: Sans;
+}
+
+#container {
+  max-width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#clock {
+  width: 50%;
+  max-width: 400px;
+}
